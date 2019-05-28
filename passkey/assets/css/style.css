@@ -1639,6 +1639,7 @@ ul.states li {
  ------------------------------------*/
 
 .modal-content {
+    background-color:rgba(234, 234, 234, 1.00);
     border: 1px solid rgba(0, 0, 0, .2);
     box-shadow: none;
     -o-box-shadow: none;
@@ -4383,7 +4384,8 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     border: 1px solid transparent !important;
 }
 .loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
-    color: rgba(250, 133, 100, 1)
+    /*color: rgba(250, 133, 100, 1)*/
+    color:black;
     /*#fa8564*/
     
     ;
