@@ -32,6 +32,7 @@
         <link href="assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/ios-switch/css/switch.css" rel="stylesheet" />
         <!-- CORE CSS FRAMEWORK - END -->
 
         <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START --> 
@@ -109,6 +110,8 @@
             background-color: initial;
             border: unset;
         }
+   
+       
     
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -204,11 +207,11 @@
                         <div class="profile-details col-lg-8 col-md-8 col-8">
 
                             <h3>
-                                <a href="#"><span id="sidebar-companyname"></span></a>
+                                <a href="#"><span id="sidebar-companyname"></span></a><br />
 
                                 <!-- Available statuses: online, idle, busy, away and offline -->
-                                <span class="profile-status online">
-                                    <input type="checkbox" class="iswitch iswitch-lg iswitch-primary" />
+                                <span class="profile-status online" >
+                                    <input type="checkbox" class="iswitch iswitch-md iswitch-primary" id="client_status" style="display:none;" onclick="updateClientStatus();" />
                                 </span>
                                 
                             </h3>
@@ -228,15 +231,20 @@
                         <li class=""> 
                             <a href="#">
                                 <i class="fa fa-dashboard"></i>
-                                <span class="title" onclick="getclients();">Dashboard</span>
+                                <span class="title" onclick="getclients();">Company Dashboard</span>
                             </a>
                         </li>
-                        
+                        <li class=""> 
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i>
+                                <span class="title" onclick="getInstalations();">Instalations</span>
+                            </a>
+                        </li>
                         <li class="" id="psw-managment-folder"> <a href="javascript:;"> <i class="fa fa-folder-open"></i> <span class="title">Passowrd Managment</span> <span class="arrow "></span> </a>
                             <ul class="sub-menu">
                                 <li id="hlpdsc-folder"> <a href="javascript:;"> <span class="title">Helpdesk</span> <span class="arrow "></span></a>
                                     <ul class="sub-menu">
-                                        <li > <a href="javascript:;"> <span class="title" onclick="getclient($('#client_id').val())">Conpany Info</span> </a></li>
+                                        <li > <a href="javascript:;" id="company-info-sub-menu"> <span class="title" onclick="getclient($('#client_id').val())">Conpany Info</span> </a></li>
                                         <li > <a href="javascript:;"> <span class="title" onclick="getdata($('#client_id').val(),'usermanagement')">User Management</span><span id="usermanagement_counter" class="badge badge-orange"></span> </a></li>
                                         <li > <a href="javascript:;"> <span class="title" onclick="getdata($('#client_id').val(),'helpdeskemailaccounts')">Email Accounts</span><span id="helpdeskemailaccounts_counter" class="badge badge-orange"></span> </a></li>
                                         <li > <a href="javascript:;"> <span class="title" onclick="getdata($('#client_id').val(),'helpdesksoftwarelicenses')">Software Licenses</span><span id="helpdesksoftwarelicenses_counter" class="badge badge-orange"></span> </a></li>
@@ -246,9 +254,9 @@
                                         <li > <a href="javascript:;"> <span class="title" onclick="getdata($('#client_id').val(),'helpdeskcloudapplications')">Cloud Applications</span><span id="helpdeskcloudapplications_counter" class="badge badge-orange"></span> </a></li>
                                     </ul> 
                                 </li>
-                                <li > <a href="javascript:;"> <span class="title">Level 1.2</span> <span class="arrow "></span> </a>
+                                <li > <a href="javascript:;"> <span class="title">Servers</span> <span class="arrow "></span> </a>
                                     <ul class="sub-menu">
-                                        <li > <a href="javascript:;"> <span class="title">Level 2.1</span> </a></li>
+                                        <li > <a href="javascript:;"> <span class="title"  onclick="getdata($('#client_id').val(),'microsoft_servers')">Windows Servers</span><span id="microsoft_servers_counter" class="badge badge-orange"></span> </a></li>
                                         <li > <a href="ujavascript:;"> <span class="title">Level 2.2</span> <span class="arrow "></span></a> 
                                             <ul class="sub-menu">
                                                 <li > <a href="javascript:;"> <span class="title">Level 3.1</span> <span class="arrow "></span></a> 
@@ -264,7 +272,17 @@
                                 </li>
                             </ul>
                         </li>
-
+                        <li class=""> 
+                            <a href="javascript:;"><i class="fa fa-dashboard"></i><span class="title">Manulas</span></a>
+                            <ul class="sub-menu">
+                                <li ><a href="javascript:;" id="ip-surveillance-menu"><span class="title" onclick="getManuals('IP Surveillance')">IP Surveillance</span></a></li>
+                                <li ><a href="javascript:;" id="ip-telephony-menu"><span class="title" onclick="getManuals('IP Telephony')">IP Telephony</span></a></li>
+                                <li ><a href="javascript:;" id="e-mails-menu"><span class="title" onclick="getManuals('E-Mails')">E-Mails</span></a></li>
+                                <li ><a href="javascript:;" id="file-sharing-menu"><span class="title" onclick="getManuals('File Sharing')">File Sharing</span></a></li>
+                                <li ><a href="javascript:;" id="encryption-menu"><span class="title" onclick="getManuals('Encryption')">Encryption</span></a></li>
+                                <li ><a href="javascript:;" id="applications-menu"><span class="title" onclick="getManuals('Applications')">Applications</span></a></li>
+                            </ul>
+                        </li>
 
                     </ul>
 
@@ -337,9 +355,12 @@
     
     </form>
 </body>
+    
     <script>
         $(document).ready(function () {
-            $('#example-11').on('click', '.green-link', function () {
+            $('#client_status').hide();
+
+            $('#clients-table').on('click', '.green-link', function () {
                 ExpandMenu();
             })
             $('#generatePasswordBtn').on('click', function () {
@@ -348,6 +369,12 @@
                 document.execCommand("copy");
                 window.getSelection().removeAllRanges();
             })
+
+
+            $(".sub-menu a").on("click", function () {
+                $(".sub-menu").find(".active").removeClass("active");
+                $(this).addClass("active");
+            });
         })
         function generatePassword() {
             var length = 8,
@@ -367,6 +394,8 @@
             if (!$('#hlpdsc-folder').hasClass('open')) {
                 $('#hlpdsc-folder, #hlpdsc-folder>a .arrow').addClass('open');
                 $('#hlpdsc-folder>ul').show();
+                $('#company-info-sub-menu').addClass("active");
+
             }
         }
     </script>

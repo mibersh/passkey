@@ -42,7 +42,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Google.Authenticator.dll</HintPath>
     </Reference>
+    <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c6752e45808247c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -1443,344 +1451,12 @@
     <Content Include="assets\plugins\x-editable\img\loading.gif" />
     <Content Include="assets\plugins\x-editable\js\bootstrap-editable.js" />
     <Content Include="assets\plugins\x-editable\js\bootstrap-editable.min.js" />
-    <Content Include="blank.html" />
-    <Content Include="data\ajax-modal-content.txt" />
-    <Content Include="data\albums\album-1.jpg" />
-    <Content Include="data\albums\album-2.jpg" />
-    <Content Include="data\albums\album-3.jpg" />
-    <Content Include="data\albums\album-4.jpg" />
-    <Content Include="data\albums\album-5.jpg" />
-    <Content Include="data\albums\album-6.jpg" />
-    <Content Include="data\albums\album-7.jpg" />
-    <Content Include="data\albums\album-8.jpg" />
-    <Content Include="data\albums\album-9.jpg" />
-    <Content Include="data\blo-media\media-1.jpg" />
-    <Content Include="data\blo-media\media-10.jpg" />
-    <Content Include="data\blo-media\media-2.jpg" />
-    <Content Include="data\blo-media\media-3.jpg" />
-    <Content Include="data\blo-media\media-4.jpg" />
-    <Content Include="data\blo-media\media-5.jpg" />
-    <Content Include="data\blo-media\media-6.jpg" />
-    <Content Include="data\blo-media\media-7.jpg" />
-    <Content Include="data\blo-media\media-8.jpg" />
-    <Content Include="data\blo-media\media-9.jpg" />
-    <Content Include="data\blo-pages\blog-1.jpg" />
-    <Content Include="data\blo-pages\blog-10.jpg" />
-    <Content Include="data\blo-pages\blog-2.jpg" />
-    <Content Include="data\blo-pages\blog-3.jpg" />
-    <Content Include="data\blo-pages\blog-4.jpg" />
-    <Content Include="data\blo-pages\blog-5.jpg" />
-    <Content Include="data\blo-pages\blog-6.jpg" />
-    <Content Include="data\blo-pages\blog-7.jpg" />
-    <Content Include="data\blo-pages\blog-8.jpg" />
-    <Content Include="data\blo-pages\blog-9.jpg" />
-    <Content Include="data\blo-users\user-1.jpg" />
-    <Content Include="data\blo-users\user-10.jpg" />
-    <Content Include="data\blo-users\user-11.jpg" />
-    <Content Include="data\blo-users\user-12.jpg" />
-    <Content Include="data\blo-users\user-2.jpg" />
-    <Content Include="data\blo-users\user-3.jpg" />
-    <Content Include="data\blo-users\user-4.jpg" />
-    <Content Include="data\blo-users\user-5.jpg" />
-    <Content Include="data\blo-users\user-6.jpg" />
-    <Content Include="data\blo-users\user-7.jpg" />
-    <Content Include="data\blo-users\user-8.jpg" />
-    <Content Include="data\blo-users\user-9.jpg" />
-    <Content Include="data\blog.png" />
-    <Content Include="data\blogs\blog-1.jpg" />
-    <Content Include="data\blogs\blog-10.jpg" />
-    <Content Include="data\blogs\blog-2.jpg" />
-    <Content Include="data\blogs\blog-3.jpg" />
-    <Content Include="data\blogs\blog-4.jpg" />
-    <Content Include="data\blogs\blog-5.jpg" />
-    <Content Include="data\blogs\blog-6.jpg" />
-    <Content Include="data\blogs\blog-7.jpg" />
-    <Content Include="data\blogs\blog-8.jpg" />
-    <Content Include="data\blogs\blog-9.jpg" />
-    <Content Include="data\calendars\crm-calendar.js" />
-    <Content Include="data\calendars\hos-doc-schedule.js" />
-    <Content Include="data\calendars\hos-events.js" />
-    <Content Include="data\calendars\mus-events.js" />
-    <Content Include="data\calendars\uni-events.js" />
-    <Content Include="data\carousel\v1.jpg" />
-    <Content Include="data\carousel\v2.jpg" />
-    <Content Include="data\carousel\v3.jpg" />
-    <Content Include="data\carousel\v4.jpg" />
-    <Content Include="data\carousel\v5.jpg" />
-    <Content Include="data\ckeditor-sample.jpg" />
-    <Content Include="data\courses\course-1.jpg" />
-    <Content Include="data\courses\course-10.jpg" />
-    <Content Include="data\courses\course-11.jpg" />
-    <Content Include="data\courses\course-12.jpg" />
-    <Content Include="data\courses\course-2.jpg" />
-    <Content Include="data\courses\course-3.jpg" />
-    <Content Include="data\courses\course-4.jpg" />
-    <Content Include="data\courses\course-5.jpg" />
-    <Content Include="data\courses\course-6.jpg" />
-    <Content Include="data\courses\course-7.jpg" />
-    <Content Include="data\courses\course-8.jpg" />
-    <Content Include="data\courses\course-9.jpg" />
-    <Content Include="data\crm-contacts\contact-1.jpg" />
-    <Content Include="data\crm-customers\customer-1.jpg" />
-    <Content Include="data\crm-leads\lead-1.jpg" />
-    <Content Include="data\crm-tickets\ticket-1.jpg" />
-    <Content Include="data\crm-users\user-1.jpg" />
-    <Content Include="data\crm-vendors\vendor-1.jpg" />
-    <Content Include="data\doctors\doctor-1.jpg" />
-    <Content Include="data\doctors\doctor-2.jpg" />
-    <Content Include="data\doctors\doctor-3.jpg" />
-    <Content Include="data\doctors\doctor-4.jpg" />
-    <Content Include="data\doctors\doctor-5.jpg" />
-    <Content Include="data\doctors\doctor-6.jpg" />
-    <Content Include="data\doctors\doctor-7.jpg" />
-    <Content Include="data\doctors\doctor-8.jpg" />
-    <Content Include="data\doctors\doctor-9.jpg" />
-    <Content Include="data\eco-customers\customer-1.jpg" />
-    <Content Include="data\eco-products\product-1.jpg" />
-    <Content Include="data\eco-products\product-10.jpg" />
-    <Content Include="data\eco-products\product-11.jpg" />
-    <Content Include="data\eco-products\product-12.jpg" />
-    <Content Include="data\eco-products\product-13.jpg" />
-    <Content Include="data\eco-products\product-14.jpg" />
-    <Content Include="data\eco-products\product-15.jpg" />
-    <Content Include="data\eco-products\product-16.jpg" />
-    <Content Include="data\eco-products\product-17.jpg" />
-    <Content Include="data\eco-products\product-18.jpg" />
-    <Content Include="data\eco-products\product-19.jpg" />
-    <Content Include="data\eco-products\product-2.jpg" />
-    <Content Include="data\eco-products\product-20.jpg" />
-    <Content Include="data\eco-products\product-21.jpg" />
-    <Content Include="data\eco-products\product-22.jpg" />
-    <Content Include="data\eco-products\product-23.jpg" />
-    <Content Include="data\eco-products\product-24.jpg" />
-    <Content Include="data\eco-products\product-25.jpg" />
-    <Content Include="data\eco-products\product-3.jpg" />
-    <Content Include="data\eco-products\product-4.jpg" />
-    <Content Include="data\eco-products\product-5.jpg" />
-    <Content Include="data\eco-products\product-6.jpg" />
-    <Content Include="data\eco-products\product-7.jpg" />
-    <Content Include="data\eco-products\product-8.jpg" />
-    <Content Include="data\eco-products\product-9.jpg" />
-    <Content Include="data\eco-users\user-1.jpg" />
-    <Content Include="data\eco-vendors\vendor-1.jpg" />
-    <Content Include="data\frl-buyers\buyer-1.jpg" />
-    <Content Include="data\frl-sellers\seller-1.jpg" />
-    <Content Include="data\frl-tickets\ticket-1.jpg" />
-    <Content Include="data\frl-users\user-1.jpg" />
-    <Content Include="data\gallery\01.jpg" />
-    <Content Include="data\gallery\02.jpg" />
-    <Content Include="data\gallery\03.jpg" />
-    <Content Include="data\gallery\04.jpg" />
-    <Content Include="data\gallery\05.jpg" />
-    <Content Include="data\gallery\06.jpg" />
-    <Content Include="data\gallery\07.jpg" />
-    <Content Include="data\gallery\08.jpg" />
-    <Content Include="data\gallery\full.jpg" />
-    <Content Include="data\hos-staffs\staff-1.jpg" />
-    <Content Include="data\hos-staffs\staff-10.jpg" />
-    <Content Include="data\hos-staffs\staff-11.jpg" />
-    <Content Include="data\hos-staffs\staff-12.jpg" />
-    <Content Include="data\hos-staffs\staff-2.jpg" />
-    <Content Include="data\hos-staffs\staff-3.jpg" />
-    <Content Include="data\hos-staffs\staff-4.jpg" />
-    <Content Include="data\hos-staffs\staff-5.jpg" />
-    <Content Include="data\hos-staffs\staff-6.jpg" />
-    <Content Include="data\hos-staffs\staff-7.jpg" />
-    <Content Include="data\hos-staffs\staff-8.jpg" />
-    <Content Include="data\hos-staffs\staff-9.jpg" />
-    <Content Include="data\image-cropper-1.jpg" />
-    <Content Include="data\image-cropper-2.jpg" />
-    <Content Include="data\invoice\invoice-logo.png" />
-    <Content Include="data\mail\attach-1.png" />
-    <Content Include="data\mail\attach-2.png" />
-    <Content Include="data\mail\attach-3.png" />
-    <Content Include="data\members\person-1.jpg" />
-    <Content Include="data\members\person-2.jpg" />
-    <Content Include="data\members\person-3.jpg" />
-    <Content Include="data\members\person-4.jpg" />
-    <Content Include="data\members\person-5.jpg" />
-    <Content Include="data\members\person-6.jpg" />
-    <Content Include="data\members\person-7.jpg" />
-    <Content Include="data\movies\1.jpg" />
-    <Content Include="data\movies\2.jpg" />
-    <Content Include="data\movies\3.jpg" />
-    <Content Include="data\movies\4.jpg" />
-    <Content Include="data\movies\5.jpg" />
-    <Content Include="data\movies\6.jpg" />
-    <Content Include="data\movies\7.jpg" />
-    <Content Include="data\mus-artists\artist-1.jpg" />
-    <Content Include="data\mus-artists\artist-10.jpg" />
-    <Content Include="data\mus-artists\artist-11.jpg" />
-    <Content Include="data\mus-artists\artist-12.jpg" />
-    <Content Include="data\mus-artists\artist-13.jpg" />
-    <Content Include="data\mus-artists\artist-14.jpg" />
-    <Content Include="data\mus-artists\artist-15.jpg" />
-    <Content Include="data\mus-artists\artist-16.jpg" />
-    <Content Include="data\mus-artists\artist-17.jpg" />
-    <Content Include="data\mus-artists\artist-18.jpg" />
-    <Content Include="data\mus-artists\artist-19.jpg" />
-    <Content Include="data\mus-artists\artist-2.jpg" />
-    <Content Include="data\mus-artists\artist-20.jpg" />
-    <Content Include="data\mus-artists\artist-3.jpg" />
-    <Content Include="data\mus-artists\artist-4.jpg" />
-    <Content Include="data\mus-artists\artist-5.jpg" />
-    <Content Include="data\mus-artists\artist-6.jpg" />
-    <Content Include="data\mus-artists\artist-7.jpg" />
-    <Content Include="data\mus-artists\artist-8.jpg" />
-    <Content Include="data\mus-artists\artist-9.jpg" />
-    <Content Include="data\mus-song-files\song-1.mp3" />
-    <Content Include="data\mus-song-files\song-2.mp3" />
-    <Content Include="data\mus-song-files\song-3.mp3" />
-    <Content Include="data\patients\patient-1.jpg" />
-    <Content Include="data\patients\patient-10.jpg" />
-    <Content Include="data\patients\patient-11.jpg" />
-    <Content Include="data\patients\patient-12.jpg" />
-    <Content Include="data\patients\patient-2.jpg" />
-    <Content Include="data\patients\patient-3.jpg" />
-    <Content Include="data\patients\patient-4.jpg" />
-    <Content Include="data\patients\patient-5.jpg" />
-    <Content Include="data\patients\patient-6.jpg" />
-    <Content Include="data\patients\patient-7.jpg" />
-    <Content Include="data\patients\patient-8.jpg" />
-    <Content Include="data\patients\patient-9.jpg" />
-    <Content Include="data\playlists\playlist-1.jpg" />
-    <Content Include="data\playlists\playlist-2.jpg" />
-    <Content Include="data\playlists\playlist-3.jpg" />
-    <Content Include="data\playlists\playlist-4.jpg" />
-    <Content Include="data\playlists\playlist-5.jpg" />
-    <Content Include="data\playlists\playlist-6.jpg" />
-    <Content Include="data\playlists\playlist-7.jpg" />
-    <Content Include="data\playlists\playlist-8.jpg" />
-    <Content Include="data\playlists\playlist-9.jpg" />
-    <Content Include="data\professors\professor-1.jpg" />
-    <Content Include="data\professors\professor-10.jpg" />
-    <Content Include="data\professors\professor-11.jpg" />
-    <Content Include="data\professors\professor-12.jpg" />
-    <Content Include="data\professors\professor-2.jpg" />
-    <Content Include="data\professors\professor-3.jpg" />
-    <Content Include="data\professors\professor-4.jpg" />
-    <Content Include="data\professors\professor-5.jpg" />
-    <Content Include="data\professors\professor-6.jpg" />
-    <Content Include="data\professors\professor-7.jpg" />
-    <Content Include="data\professors\professor-8.jpg" />
-    <Content Include="data\professors\professor-9.jpg" />
-    <Content Include="data\profile\avatar-1.png" />
-    <Content Include="data\profile\avatar-2.png" />
-    <Content Include="data\profile\avatar-3.png" />
-    <Content Include="data\profile\avatar-4.png" />
-    <Content Include="data\profile\avatar-5.png" />
-    <Content Include="data\profile\profile-blog.jpg" />
-    <Content Include="data\profile\profile-crm.jpg" />
-    <Content Include="data\profile\profile-ecommerce.jpg" />
-    <Content Include="data\profile\profile-freelancing.jpg" />
-    <Content Include="data\profile\profile-hospital.jpg" />
-    <Content Include="data\profile\profile-music.jpg" />
-    <Content Include="data\profile\profile-socialmedia.jpg" />
-    <Content Include="data\profile\profile-university.jpg" />
-    <Content Include="data\profile\profile.png" />
-    <Content Include="data\profile\user.png" />
-    <Content Include="data\responsive-images\200x200.svg" />
-    <Content Include="data\responsive-images\895x250.svg" />
-    <Content Include="data\search\1.png" />
-    <Content Include="data\search\2.png" />
-    <Content Include="data\search\3.png" />
-    <Content Include="data\search\4.png" />
-    <Content Include="data\soc-groups\group-1.jpg" />
-    <Content Include="data\soc-groups\group-10.jpg" />
-    <Content Include="data\soc-groups\group-11.jpg" />
-    <Content Include="data\soc-groups\group-12.jpg" />
-    <Content Include="data\soc-groups\group-2.jpg" />
-    <Content Include="data\soc-groups\group-3.jpg" />
-    <Content Include="data\soc-groups\group-4.jpg" />
-    <Content Include="data\soc-groups\group-5.jpg" />
-    <Content Include="data\soc-groups\group-6.jpg" />
-    <Content Include="data\soc-groups\group-7.jpg" />
-    <Content Include="data\soc-groups\group-8.jpg" />
-    <Content Include="data\soc-groups\group-9.jpg" />
-    <Content Include="data\soc-media\media-1.jpg" />
-    <Content Include="data\soc-media\media-10.jpg" />
-    <Content Include="data\soc-media\media-2.jpg" />
-    <Content Include="data\soc-media\media-3.jpg" />
-    <Content Include="data\soc-media\media-4.jpg" />
-    <Content Include="data\soc-media\media-5.jpg" />
-    <Content Include="data\soc-media\media-6.jpg" />
-    <Content Include="data\soc-media\media-7.jpg" />
-    <Content Include="data\soc-media\media-8.jpg" />
-    <Content Include="data\soc-media\media-9.jpg" />
-    <Content Include="data\soc-members\member-1.jpg" />
-    <Content Include="data\soc-members\member-10.jpg" />
-    <Content Include="data\soc-members\member-11.jpg" />
-    <Content Include="data\soc-members\member-12.jpg" />
-    <Content Include="data\soc-members\member-2.jpg" />
-    <Content Include="data\soc-members\member-3.jpg" />
-    <Content Include="data\soc-members\member-4.jpg" />
-    <Content Include="data\soc-members\member-5.jpg" />
-    <Content Include="data\soc-members\member-6.jpg" />
-    <Content Include="data\soc-members\member-7.jpg" />
-    <Content Include="data\soc-members\member-8.jpg" />
-    <Content Include="data\soc-members\member-9.jpg" />
-    <Content Include="data\songs\song-1.jpg" />
-    <Content Include="data\songs\song-10.jpg" />
-    <Content Include="data\songs\song-11.jpg" />
-    <Content Include="data\songs\song-12.jpg" />
-    <Content Include="data\songs\song-13.jpg" />
-    <Content Include="data\songs\song-14.jpg" />
-    <Content Include="data\songs\song-15.jpg" />
-    <Content Include="data\songs\song-16.jpg" />
-    <Content Include="data\songs\song-17.jpg" />
-    <Content Include="data\songs\song-18.jpg" />
-    <Content Include="data\songs\song-19.jpg" />
-    <Content Include="data\songs\song-2.jpg" />
-    <Content Include="data\songs\song-20.jpg" />
-    <Content Include="data\songs\song-21.jpg" />
-    <Content Include="data\songs\song-22.jpg" />
-    <Content Include="data\songs\song-23.jpg" />
-    <Content Include="data\songs\song-24.jpg" />
-    <Content Include="data\songs\song-25.jpg" />
-    <Content Include="data\songs\song-3.jpg" />
-    <Content Include="data\songs\song-4.jpg" />
-    <Content Include="data\songs\song-5.jpg" />
-    <Content Include="data\songs\song-6.jpg" />
-    <Content Include="data\songs\song-7.jpg" />
-    <Content Include="data\songs\song-8.jpg" />
-    <Content Include="data\songs\song-9.jpg" />
-    <Content Include="data\students\student-1.jpg" />
-    <Content Include="data\students\student-10.jpg" />
-    <Content Include="data\students\student-11.jpg" />
-    <Content Include="data\students\student-12.jpg" />
-    <Content Include="data\students\student-2.jpg" />
-    <Content Include="data\students\student-3.jpg" />
-    <Content Include="data\students\student-4.jpg" />
-    <Content Include="data\students\student-5.jpg" />
-    <Content Include="data\students\student-6.jpg" />
-    <Content Include="data\students\student-7.jpg" />
-    <Content Include="data\students\student-8.jpg" />
-    <Content Include="data\students\student-9.jpg" />
-    <Content Include="data\thumb.png" />
-    <Content Include="data\uni-staffs\staff-1.jpg" />
-    <Content Include="data\uni-staffs\staff-10.jpg" />
-    <Content Include="data\uni-staffs\staff-11.jpg" />
-    <Content Include="data\uni-staffs\staff-12.jpg" />
-    <Content Include="data\uni-staffs\staff-2.jpg" />
-    <Content Include="data\uni-staffs\staff-3.jpg" />
-    <Content Include="data\uni-staffs\staff-4.jpg" />
-    <Content Include="data\uni-staffs\staff-5.jpg" />
-    <Content Include="data\uni-staffs\staff-6.jpg" />
-    <Content Include="data\uni-staffs\staff-7.jpg" />
-    <Content Include="data\uni-staffs\staff-8.jpg" />
-    <Content Include="data\uni-staffs\staff-9.jpg" />
     <Content Include="default.aspx" />
-    <Content Include="form-masks.html" />
     <Content Include="js\jquery.fileupload.js" />
     <Content Include="js\jquery.iframe-transport.js" />
     <Content Include="js\jquery.ui.widget.js" />
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
-    <Content Include="tables-data.html" />
-    <Content Include="testtable.aspx" />
-    <Content Include="ui-accordion.html" />
-    <Content Include="ui-login.html" />
-    <Content Include="ui-modals.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1798,8 +1474,14 @@
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="api\AddUpdateManual.ashx.cs">
+      <DependentUpon>AddUpdateManual.ashx</DependentUpon>
+    </Compile>
     <Compile Include="api\AjaxFileHandler.ashx.cs">
       <DependentUpon>AjaxFileHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="api\AjaxMSFileHandler.ashx.cs">
+      <DependentUpon>AjaxMSFileHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="api\exportdata.ashx.cs">
       <DependentUpon>exportdata.ashx</DependentUpon>
@@ -1807,10 +1489,11 @@
     <Compile Include="api\importdata.ashx.cs">
       <DependentUpon>importdata.ashx</DependentUpon>
     </Compile>
-    <Compile Include="api\test.ashx.cs">
-      <DependentUpon>test.ashx</DependentUpon>
-    </Compile>
+    <Content Include="App_Code\microsoft_server_user.cs" />
     <Compile Include="App_Code\Support.cs" />
+    <Compile Include="classes\microsoft_server_networks.cs" />
+    <Compile Include="classes\microsoft_server_users.cs" />
+    <Compile Include="classes\ws.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1840,13 +1523,6 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="testtable.aspx.cs">
-      <DependentUpon>testtable.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="testtable.aspx.designer.cs">
-      <DependentUpon>testtable.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\fonts\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -1918,22 +1594,14 @@
     <Content Include="assets\plugins\uikit\fonts\fontawesome-webfont.ttf" />
     <Content Include="assets\plugins\uikit\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\plugins\uikit\fonts\FontAwesome.otf" />
-    <Content Include="data\ajax_demo_children_jstree.json" />
-    <Content Include="data\ajax_demo_roots_jstree.json" />
-    <Content Include="data\mus-song-files\song-1.ogg" />
-    <Content Include="data\mus-song-files\song-2.ogg" />
-    <Content Include="data\mus-song-files\song-3.ogg" />
-    <Content Include="data\names.json" />
-    <Content Include="data\select2-remote-data.php" />
-    <Content Include="data\typeahead-generate.php" />
-    <Content Include="data\typeahead-hp-movies.php" />
-    <Content Include="data\upload-file.php" />
     <Content Include="admin.Master" />
     <Content Include="MasterPage.Master" />
     <Content Include="api\AjaxFileHandler.ashx" />
     <Content Include="api\importdata.ashx" />
     <Content Include="api\exportdata.ashx" />
-    <Content Include="api\test.ashx" />
+    <Content Include="packages.config" />
+    <Content Include="api\AjaxMSFileHandler.ashx" />
+    <Content Include="api\AddUpdateManual.ashx" />
     <None Include="Properties\PublishProfiles\passkey_publish.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -678,6 +678,311 @@ namespace passkey.App_Code
             }
             return serializer.Serialize(rows);
         }
+        internal DataSet gethelpdeskcounts(string  client_id)
+        {
+            DataSet ds = new DataSet();
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
 
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.Parameters.AddWithValue("@client_id", client_id);
+                cm.CommandText = "getHelpdeskCounts";
+
+                SqlDataAdapter da = new SqlDataAdapter(cm);
+                da.Fill(ds);
+            }
+            return ds;
+        }
+
+        internal void UpdateClientStatus(string client_id, string active)
+        {
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "UpdateClientStatus";
+
+                cm.Parameters.AddWithValue("@client_id", client_id);
+                cm.Parameters.AddWithValue("@active", active);
+
+                cm.ExecuteNonQuery();
+
+            }
+        }
+
+        internal void AddAudit(string client_id, string userid, string changes)
+        {
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "AddAudit";
+
+
+
+                cm.Parameters.AddWithValue("@client_id", client_id);
+                cm.Parameters.AddWithValue("@userid", userid);
+                cm.Parameters.AddWithValue("@changedate", DateTime.Now);
+                cm.Parameters.AddWithValue("@changes", changes);
+
+                cm.ExecuteNonQuery();
+            }
+
+        }
+
+        internal DataSet  getmicrosoft_servers(string id)
+        {
+            DataSet ds = new DataSet();
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.Parameters.AddWithValue("@client_id", id);
+                cm.CommandText = "get_microsoft_servers";
+
+                SqlDataAdapter da = new SqlDataAdapter(cm);
+                da.Fill(ds);
+            }
+            return ds;
+        }
+
+        internal string AddUpdateWindowsServer(classes.ws win)
+        {
+            string new_id = win.id;
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "addupdate_microsoft_servers";
+
+
+                if (!string.IsNullOrEmpty(win.id.ToString ()))
+                {
+                    cm.Parameters.AddWithValue("@id", win.id);
+                }
+                else
+                {
+                    cm.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.InputOutput;
+                }
+                //cm.Parameters.AddWithValue("@client_id", win.client_id);
+                if (!string .IsNullOrEmpty(win.server_version) )cm.Parameters.AddWithValue("@server_version", win.server_version);
+
+
+                cm.Parameters.AddWithValue("@client_id",win.client_id.ToString () );
+                if (!string .IsNullOrEmpty(win.server_version_other) )cm.Parameters.AddWithValue("@server_version_other",win.server_version_other);
+                if (!string .IsNullOrEmpty(win.location) )cm.Parameters.AddWithValue("@location",win.location);
+                if (!string .IsNullOrEmpty(win.operating_roles) )cm.Parameters.AddWithValue("@operating_roles",win.operating_roles );
+                if (!string .IsNullOrEmpty(win.hostname) )cm.Parameters.AddWithValue("@hostname",win.hostname );
+                if (!string .IsNullOrEmpty(win.ipaddress) )cm.Parameters.AddWithValue("@ipaddress",win.ipaddress );
+                if (!string .IsNullOrEmpty(win.domain) )cm.Parameters.AddWithValue("@domain",win.domain );
+                if (!string .IsNullOrEmpty(win.macaddress ) )cm.Parameters.AddWithValue("@macaddress",win.macaddress );
+                if (!string .IsNullOrEmpty(win.dns_entry ) )cm.Parameters.AddWithValue("@dns_entry",win.dns_entry );
+                if (!string.IsNullOrEmpty(win.username)) cm.Parameters.AddWithValue("@username", win.username);
+                if (!string .IsNullOrEmpty(win.password ) )cm.Parameters.AddWithValue("@password",win.password );
+                if (!string .IsNullOrEmpty(win.license ) )cm.Parameters.AddWithValue("@license",win.license );
+                if (!string .IsNullOrEmpty(win.filename ) )cm.Parameters.AddWithValue("@filename",win.filename );
+                if (!string .IsNullOrEmpty(win.dhcp_server.ToString () ) )cm.Parameters.AddWithValue("@dhcp_server",win.dhcp_server );
+                if (!string .IsNullOrEmpty(win.dhcp_primary_pool ) )cm.Parameters.AddWithValue("@dhcp_primary_pool",win.dhcp_primary_pool );
+                if (!string .IsNullOrEmpty(win.dhcp_additinal_lease_time ) )cm.Parameters.AddWithValue("@dhcp_primary_lease_time",win.dhcp_additinal_lease_time );
+                if (!string .IsNullOrEmpty(win.dhcp_additinal_pool ) )cm.Parameters.AddWithValue("@dhcp_additinal_pool",win.dhcp_additinal_pool );
+                if (!string .IsNullOrEmpty(win.dhcp_additinal_lease_time ) )cm.Parameters.AddWithValue("@dhcp_additinal_lease_time",win.dhcp_additinal_lease_time );
+                if (!string .IsNullOrEmpty(win.dhcp_reservations ) )cm.Parameters.AddWithValue("@dhcp_reservations",win.dhcp_reservations );
+                if (!string .IsNullOrEmpty(win.dns_server.ToString ()) )cm.Parameters.AddWithValue("@dns_server",win.dns_server );
+                if (!string .IsNullOrEmpty(win.dns_primary_server_ip ) )cm.Parameters.AddWithValue("@dns_primary_server_ip", win.dns_primary_server_ip );
+                if (!string .IsNullOrEmpty(win.dns_secondary_server_ip ) )cm.Parameters.AddWithValue("@dns_secondary_server_ip", win.dns_secondary_server_ip );
+                if (!string .IsNullOrEmpty(win.dns_static_entry ) )cm.Parameters.AddWithValue("@dns_static_entry",win.dns_static_entry );
+                if (!string .IsNullOrEmpty(win.dhcp_filename ) )cm.Parameters.AddWithValue("@dhcp_filename",win.dhcp_filename );
+                if (!string .IsNullOrEmpty(win.install_date  ) )cm.Parameters.AddWithValue("@install_date",win.install_date );
+                if (!string .IsNullOrEmpty(win.domain_controller .ToString () ) )cm.Parameters.AddWithValue("@domain_controller",win.domain_controller ); 
+                if (!string .IsNullOrEmpty(win.domain_primary_controller  ) )cm.Parameters.AddWithValue("@domain_primary_controller",win.domain_primary_controller );
+                if (!string .IsNullOrEmpty(win.domain_secondary_controller  ) )cm.Parameters.AddWithValue("@domain_secondary_controller", win.domain_secondary_controller );
+                if (!string .IsNullOrEmpty(win.domain_name  ) )cm.Parameters.AddWithValue("@domain_name",win.domain_name );
+                if (!string .IsNullOrEmpty(win.dfs.ToString () ) )cm.Parameters.AddWithValue("@dfs",win.dfs);
+                if (!string .IsNullOrEmpty(win.dfs_primary_controller_ip  ) )cm.Parameters.AddWithValue("@dfs_primary_controller_ip",win.dfs_primary_controller_ip );
+                if (!string .IsNullOrEmpty(win.dfs_secondary_controller_ip  ) )cm.Parameters.AddWithValue("@dfs_secondary_controller_ip", win.dfs_secondary_controller_ip );
+                if (!string .IsNullOrEmpty(win.dfs_filename  ) )cm.Parameters.AddWithValue("@dfs_filename",win.dfs_filename );
+                if (!string .IsNullOrEmpty(win.ad.ToString () ) )cm.Parameters.AddWithValue("@ad",win.ad); 
+                if (!string .IsNullOrEmpty(win.ad_primary_controller  ) )cm.Parameters.AddWithValue("@ad_primary_controller",win.ad_primary_controller );
+                if (!string .IsNullOrEmpty(win.ad_secondary_controller  ) )cm.Parameters.AddWithValue("ad_secondary_controller",win.ad_secondary_controller );
+                if (!string .IsNullOrEmpty(win.iis_server.ToString () ) )cm.Parameters.AddWithValue("@iis_server", win.iis_server );
+                if (!string .IsNullOrEmpty(win.web_application  ) )cm.Parameters.AddWithValue("@web_application" ,win.web_application );
+                if (!string .IsNullOrEmpty(win.application_location  ) )cm.Parameters.AddWithValue("@application_location",win.application_location );
+                if (!string .IsNullOrEmpty(win.asp_version  ) )cm.Parameters.AddWithValue("@asp_version",win.asp_version );
+                if (!string .IsNullOrEmpty(win.iis_version  ) )cm.Parameters.AddWithValue("@iis_version",win.iis_version );
+                if (!string .IsNullOrEmpty(win.certificate  ) )cm.Parameters.AddWithValue("@certificate", win.certificate );
+                if (!string .IsNullOrEmpty(win.iis_backup  ) )cm.Parameters.AddWithValue("@iis_backup",win.iis_backup );
+                if (!string .IsNullOrEmpty(win.additinal_web_applications  ) )cm.Parameters.AddWithValue("additinal_web_applications",win.additinal_web_applications );
+                if (!string .IsNullOrEmpty(win.raid.ToString () ) )cm.Parameters.AddWithValue("@raid",win.raid );
+                if (!string .IsNullOrEmpty(win.raid_controller_model  ) )cm.Parameters.AddWithValue("@raid_controller_model", win.raid_controller_model );
+                if (!string .IsNullOrEmpty(win.raid_controller_version  ) )cm.Parameters.AddWithValue("@raid_controller_version", win.raid_controller_version );
+                if (!string .IsNullOrEmpty(win.raid_serial  ) )cm.Parameters.AddWithValue("@raid_serial",win.raid_serial );
+                if (!string .IsNullOrEmpty(win.raid_function  ) )cm.Parameters.AddWithValue("@raid_function", win.raid_function );
+                if (!string .IsNullOrEmpty(win.type_of_drives  ) )cm.Parameters.AddWithValue("@type_of_drives",win.type_of_drives );
+                if (!string .IsNullOrEmpty(win.storage_size) )cm.Parameters.AddWithValue("@storage_size",win.storage_size );
+                if (!string .IsNullOrEmpty(win.disk_size_amount  ) )cm.Parameters.AddWithValue("@disk_size_amount",win.disk_size_amount );
+                if (!string .IsNullOrEmpty(win.valumes  ) )cm.Parameters.AddWithValue("@valumes",win.valumes );
+                if (!string .IsNullOrEmpty(win.storage_notes ) )cm.Parameters.AddWithValue("@storage_notes",win.storage_notes );
+                if (!string .IsNullOrEmpty(win.cpu_model  ) )cm.Parameters.AddWithValue("@cpu_model",win.cpu_model );
+                if (!string .IsNullOrEmpty(win.cpu_socet  ) )cm.Parameters.AddWithValue("@cpu_socet", win.cpu_socet );
+                if (!string .IsNullOrEmpty(win.memory_information  ) )cm.Parameters.AddWithValue("@memory_information", win.memory_information );
+                if (!string .IsNullOrEmpty(win.memory_per_module  ) )cm.Parameters.AddWithValue("@memory_per_module", win.memory_per_module );
+                if (!string .IsNullOrEmpty(win.total_memory  ) )cm.Parameters.AddWithValue("@total_memory",win.total_memory );
+                if (!string.IsNullOrEmpty(win.hardware_drivers)) cm.Parameters.AddWithValue("@hardware_drivers", win.hardware_drivers);
+
+                //cm.Parameters.AddWithValue("@server_version_other", win.server_version_other);
+
+                
+
+                cm.ExecuteNonQuery();
+
+                //if (!string.IsNullOrEmpty(id)) 
+                new_id = cm.Parameters["@id"].Value.ToString();
+            }
+            return new_id;
+        }
+
+        internal void AddUpdateMSNetworks(classes.microsoft_server_networks msn)
+        {
+            
+            string new_id = msn.id;
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "addupdate_microsoft_server_networks";
+
+
+
+                if (!string.IsNullOrEmpty(msn.id.ToString()))
+                {
+                    cm.Parameters.AddWithValue("@id", msn.id);
+                }
+                else
+                {
+                    cm.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.InputOutput;
+                }
+                //cm.Parameters.AddWithValue("@client_id", win.client_id);
+                cm.Parameters.AddWithValue("@server_id", msn.server_id);
+                if (!string.IsNullOrEmpty(msn.nic)) cm.Parameters.AddWithValue("@nic", msn.nic);
+                if (!string.IsNullOrEmpty(msn.nic_name)) cm.Parameters.AddWithValue("@nic_name", msn.nic_name);
+                if (!string.IsNullOrEmpty(msn.nic_ip)) cm.Parameters.AddWithValue("@nic_ip", msn.nic_ip);
+                if (!string.IsNullOrEmpty(msn.nic_subnet)) cm.Parameters.AddWithValue("@nic_subnet", msn.nic_subnet );
+                if (!string.IsNullOrEmpty(msn.nic_gateway)) cm.Parameters.AddWithValue("@nic_gateway", msn.nic_gateway );
+                if (!string.IsNullOrEmpty(msn.purpose )) cm.Parameters.AddWithValue("@purpose", msn.purpose );
+                if (!string.IsNullOrEmpty(msn.nic_macaddress)) cm.Parameters.AddWithValue("@nic_macaddress", msn.nic_macaddress);
+                cm.ExecuteNonQuery();
+
+                //if (!string.IsNullOrEmpty(id)) 
+                new_id = cm.Parameters["@id"].Value.ToString();
+            }   
+        }
+
+        internal void AddUpdateMSUsers(classes.microsoft_server_users msu)
+        {
+            string new_id = msu.id;
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "addupdate_microsoft_server_users";
+
+
+
+                if (!string.IsNullOrEmpty(msu.id.ToString()))
+                {
+                    cm.Parameters.AddWithValue("@id", msu.id);
+                }
+                else
+                {
+                    cm.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.InputOutput;
+                }
+                //cm.Parameters.AddWithValue("@client_id", win.client_id);
+                cm.Parameters.AddWithValue("@server_id", msu.server_id);
+                if (!string.IsNullOrEmpty(msu.username )) cm.Parameters.AddWithValue("@username", msu.username);
+                if (!string.IsNullOrEmpty(msu.password )) cm.Parameters.AddWithValue("@password", msu.password );
+                if (!string.IsNullOrEmpty(msu.permissions)) cm.Parameters.AddWithValue("@permissions", msu.permissions);
+                if (!string.IsNullOrEmpty(msu.purpose )) cm.Parameters.AddWithValue("@purpose", msu.purpose );
+                
+                cm.ExecuteNonQuery();
+
+                //if (!string.IsNullOrEmpty(id)) 
+                new_id = cm.Parameters["@id"].Value.ToString();
+            }   
+        }
+
+        internal void AddUpdateWSFile(string server_id, string field_name, string filename)
+        {
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "AddUpdateWSFile";
+
+
+
+                
+                //cm.Parameters.AddWithValue("@client_id", win.client_id);
+                cm.Parameters.AddWithValue("@server_id", server_id);
+                cm.Parameters.AddWithValue("@field_name", field_name);
+                cm.Parameters.AddWithValue("@filename", filename);
+                
+                cm.ExecuteNonQuery();
+
+                //if (!string.IsNullOrEmpty(id)) 
+               
+            }   
+        }
+
+        internal string AddUpdateManual(string manual_name, string manual_type,string file_name)
+        {
+            string new_id = "";
+            using (SqlConnection con = new SqlConnection(cn))
+            {
+                SqlCommand cm = new SqlCommand();
+
+                con.Open();
+                cm.Connection = con;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "AddUpdateManual";
+                cm.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.InputOutput;
+                
+
+
+                //cm.Parameters.AddWithValue("@client_id", win.client_id);
+                cm.Parameters.AddWithValue("@manual_name", manual_name);
+                cm.Parameters.AddWithValue("@manual_type", manual_type);
+                cm.Parameters.AddWithValue("@filename", file_name);
+
+                cm.ExecuteNonQuery();
+
+                new_id = cm.Parameters["@id"].Value.ToString();
+
+            }
+            return new_id;
+        }
     }
 }

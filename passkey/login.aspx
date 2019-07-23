@@ -76,8 +76,11 @@
     $( document ).ready(function() {
         //$('#<%=password.ClientID%>').prop('type', 'password');
     });
+    
 </script>
-
+    <style>
+        .lcolor{color:black;}
+    </style>
 </head>
 <body class="login_page">
     <form id="form1" runat="server">
@@ -88,7 +91,7 @@
                 <%--<form name="loginform" id="loginform" action="index.html" method="post">--%>
                     <p>
                         <label for="user_login">Username<br />
-                            <asp:TextBox ID="userid" CssClass="input" runat="server"></asp:TextBox></label>
+                            <asp:TextBox ID="userid" CssClass="input lcolor" runat="server" ></asp:TextBox></label>
 
                     </p>
                     <p>
